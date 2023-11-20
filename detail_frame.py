@@ -2,7 +2,7 @@ import customtkinter as ctk
 from PIL import Image
 
 
-class DetailFrame(ctk.CTkFrame):
+class DetailFrame(ctk.CTkFrame): # Initialize customtkinter UI elements for additional details for forecast
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
 
@@ -32,8 +32,8 @@ class DetailFrame(ctk.CTkFrame):
         self.max_wind_label = ctk.CTkLabel(master=self, text="-", font=("Arial Bold", 12), width=75)
         self.max_wind_label.grid(row=0, column=6, padx=[3, 20], pady=10, sticky="nsew")
 
-    def content(self, data, count=0):
-        if data:
+    def content(self, data, count=0): # It takes data to be displayed, can be called to refresh and display another set of data
+        if data: # If there is data from the API display it
             forecast_day = data["forecast"]["forecastday"][count]
 
             astro = forecast_day["astro"]

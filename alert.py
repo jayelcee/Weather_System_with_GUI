@@ -2,14 +2,14 @@ import customtkinter as ctk
 
 
 class Alert(ctk.CTkToplevel):
-    def __init__(self, data, **kwargs):
+    def __init__(self, data, **kwargs):# Initialize customtkinter UI elements for alert
         super().__init__(**kwargs)
 
         self.data = data
         self.title("Alerts")
         self.attributes('-topmost', 'true')
 
-        if self.data:
+        if self.data: # If there is data from the API display it
             alerts = self.data["alerts"]["alert"]
 
             if len(alerts) > 0:
