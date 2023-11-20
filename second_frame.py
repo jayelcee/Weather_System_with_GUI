@@ -55,16 +55,17 @@ class SecondFrame(ctk.CTkFrame):
 
         location = self.data["location"]
         name = location["name"]
+        region = location["region"]
         country = location["country"]
 
         if formatted_date == current_date:
-            return f"Today's Weather Forecast - {name}, {country}"
+            return f"Today's Weather Forecast - {name}, {region}, {country}"
         elif formatted_date == current_date - timedelta(days=1):
-            return f"Yesterday's Weather Forecast - {name}, {country}"
+            return f"Yesterday's Weather Forecast - {name}, {region}, {country}"
         elif formatted_date == current_date + timedelta(days=1):
-            return f"Tomorrow's Weather Forecast - {name}, {country}"
+            return f"Tomorrow's Weather Forecast - {name}, {region}, {country}"
         else:
-            return f"{date_name} {str(formatted_date).split('-')[2]} {month} Weather Forecast - {name}, {country}"
+            return f"{date_name} {str(formatted_date).split('-')[2]} {month} Weather Forecast - {name}, {region}, {country}"
 
     def delete_message_text(self):
         sleep(5)

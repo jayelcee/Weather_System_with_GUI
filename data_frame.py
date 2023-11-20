@@ -77,7 +77,7 @@ class DataFrame(ctk.CTkFrame):
                     time = hour["time"].split(" ")[1]
 
                     temperature = hour["temp_c"]
-                    is_day = "day" if int(time.split(":")[0]) <=12 else "night"
+                    is_day = "day" if int(time.split(":")[0]) <= 12 else "night"
 
                     condition = hour["condition"]
                     condition_text = condition["text"]

@@ -57,49 +57,26 @@ class MainFrame(ctk.CTkFrame):
         self.next_btn.grid(row=5, column=0, padx=340, pady=[0, 10], sticky="e")
 
     def content(self):
-        self.weather_frame.grid()
-        self.weather_frame.content(self.data)
+        # Call the content methods of the weather, detail, and data frames to update their display
+        self.weather_frame.content(self.data, count=self.count, is_current_day=(self.count == 0))
         self.date_label.configure(text=self.set_label_text())
-        self.detail_frame.content(self.data)
-        self.data_frame.content(self.data)
-        self.search_entry.grid_configure(pady=[10, 0])
-        # Only disable the "Previous Day" button here, don't re-enable it.
-        self.previous_btn.configure(state="disabled")
+        self.detail_frame.content(self.data, count=self.count)
+        self.data_frame.content(self.data, count=self.count)
+
+        # Configure the state of the previous and next buttons
+        self.previous_btn.configure(state="disabled" if self.count == 0 else "normal")
+        self.next_btn.configure(
+            state="normal" if self.count < len(self.data["forecast"]["forecastday"]) - 1 else "disabled")
 
     def next(self):
-        if self.data:
+        if self.data and self.count < len(self.data["forecast"]["forecastday"]) - 1:
             self.count += 1
-            self.detail_frame.content(self.data, self.count)
-            self.data_frame.content(self.data, self.count)
-            self.date_label.configure(text=self.set_label_text())
-            self.search_entry.grid_configure(pady=[75, 10])
-
-            # Enable the "Previous Day" button if we're not on the current day.
-            if self.count >= 1:
-                self.previous_btn.configure(state="normal")
-            else:  # If self.count is not greater than 0, ensure the button is disabled.
-                self.previous_btn.configure(state="disabled")
-
-            if self.count == 6:
-                self.next_btn.configure(state="disabled")
-
-            if self.count > 0:
-                self.weather_frame.grid_remove()
+            self.content()  # Update the content for the next day
 
     def previous(self):
-        if self.data:
+        if self.data and self.count > 0:
             self.count -= 1
-            self.detail_frame.content(self.data, self.count)
-            self.data_frame.content(self.data, self.count)
-            self.date_label.configure(text=self.set_label_text())
-
-            if self.count < 7:
-                self.next_btn.configure(state="normal")
-
-            if self.count == 0:
-                self.previous_btn.configure(state="disabled")  # Disable the "Previous Day" button on the current day
-                self.weather_frame.grid()
-                self.search_entry.grid_configure(pady=[10, 0])
+            self.content()  # Update the content for the previous day
 
     def set_label_text(self):
         current_date = datetime.now().date()
@@ -109,16 +86,17 @@ class MainFrame(ctk.CTkFrame):
 
         location = self.data["location"]
         name = location["name"]
+        region = location["region"]
         country = location["country"]
 
         if formatted_date == current_date:
-            return f"Today's Weather Forecast - {name}, {country}"
+            return f"Today's Weather Forecast - {name}, {region}, {country}"
         elif formatted_date == current_date - timedelta(days=1):
-            return f"Yesterday's Weather Forecast - {name}, {country}"
+            return f"Yesterday's Weather Forecast - {name}, {region}, {country}"
         elif formatted_date == current_date + timedelta(days=1):
-            return f"Tomorrow's Weather Forecast - {name}, {country}"
+            return f"Tomorrow's Weather Forecast - {name}, {region}, {country}"
         else:
-            return f"{date_name} {str(formatted_date).split('-')[2]} {month} Weather Forecast - {name}, {country}"
+            return f"{date_name} {str(formatted_date).split('-')[2]} {month} Weather Forecast - {name}, {region}, {country}"
 
     def delete_message_text(self):
         sleep(5)
