@@ -4,7 +4,7 @@ from PIL import Image
 
 
 class WeatherFrame(ctk.CTkFrame):
-    def __init__(self, master, **kwargs): # Initialize customtkinter UI elements
+    def __init__(self, master, **kwargs): # Initialize customtkinter UI elements for current weather
         super().__init__(master, **kwargs)
 
         self.master = master
