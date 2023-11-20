@@ -7,7 +7,7 @@ API_KEY = "7ca96439d4b14c7fbb761544230711"
 
 class WeatherApi:
     def __init__(self):
-        self.db_path = 'weather_data.db'
+        self.db_path = 'weather_data_demo.db'
 
     def db_connect(self):
         return sqlite3.connect(self.db_path)

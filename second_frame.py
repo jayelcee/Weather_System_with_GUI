@@ -93,4 +93,4 @@ class SecondFrame(ctk.CTkFrame):
                 else: # If no such location is found 
                     self.message_label.configure(text="No Location Found")
 
-                Thread(target=self.delete_message_text).start() =
+                Thread(target=self.delete_message_text).start()

@@ -3,7 +3,7 @@ import sqlite3
 
 def create_database():
     # Connect to SQLite database (or create it if it doesn't exist)
-    conn = sqlite3.connect('weather_data.db')
+    conn = sqlite3.connect('weather_data_demo.db')
     cursor = conn.cursor()
 
     # Create 'locations' table
