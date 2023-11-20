@@ -3,7 +3,7 @@ from PIL import Image
 from datetime import datetime
 
 
-class DataFrame(ctk.CTkFrame):
+class DataFrame(ctk.CTkFrame): # Initialize customtkinter UI elements for forecast
     def __init__(self, master, **kwargs):
         super().__init__(master, **kwargs)
 
@@ -12,7 +12,7 @@ class DataFrame(ctk.CTkFrame):
 
         headers = ["Icon", "Temperature", "Wind", "Precipitation", "Cloud", "Humidity", "Pressure"]
 
-        for index, header in enumerate(headers, start=1):
+        for index, header in enumerate(headers, start=1): # Display headers vertically
             header_label = ctk.CTkLabel(master=self, text=header, fg_color="gray", height=50, width=100,
                                         corner_radius=3, font=("Arial Bold", 12))
             header_label.grid(row=index, column=0, padx=[9, 2], pady=[2, 2])
@@ -20,7 +20,7 @@ class DataFrame(ctk.CTkFrame):
         self.bg_color = ("white", "gray75")
         self.text_color = "black"
 
-        for i in range(1, 9):
+        for i in range(1, 9): # Set default display as empty
             self.date_label = ctk.CTkLabel(master=self, text="N/a", fg_color="gray", height=50, width=100,
                                            corner_radius=3, font=("Arial Bold", 12))
             self.date_label.grid(row=0, column=i, padx=[2, 2], pady=[9, 2], sticky="nsew")
@@ -62,8 +62,8 @@ class DataFrame(ctk.CTkFrame):
                                                corner_radius=3, font=("Arial Bold", 12))
             self.pressure_label.grid(row=7, column=i, padx=[2, 2], pady=[2, 2], sticky="nsew")
 
-    def content(self, data, count=0):
-        if data:
+    def content(self, data, count=0): # It takes data to be displayed, can be called to refresh and display another set of data
+        if data: # If there is data from the API display it
             forecast_day = data["forecast"]["forecastday"][count]
 
             date = forecast_day["date"]
@@ -148,7 +148,7 @@ class DataFrame(ctk.CTkFrame):
 
                     column += 1
 
-    def get_date_name(self, date):
+    def get_date_name(self, date): # Set date and time format to be displayed formally
         formatted_date = datetime.strptime(date, "%Y-%m-%d").date()
         date_name = formatted_date.strftime("%A")
 
