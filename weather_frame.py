@@ -4,7 +4,7 @@ from PIL import Image
 
 
 class WeatherFrame(ctk.CTkFrame):
-    def __init__(self, master, **kwargs):
+    def __init__(self, master, **kwargs): # Initialize customtkinter UI elements
         super().__init__(master, **kwargs)
 
         self.master = master
@@ -33,8 +33,8 @@ class WeatherFrame(ctk.CTkFrame):
         self.temp_label = ctk.CTkLabel(master=self, text="-", anchor="e", font=("Arial Bold", 36))
         self.temp_label.grid(row=3, column=7, padx=[5, 50], pady=[0, 30], sticky="nsew")
 
-    def content(self, data, count=0, is_current_day=True):
-        if data:
+    def content(self, data, count=0, is_current_day=True): # It takes data to be displayed, can be called to refresh and display another set of data
+        if data: # If there is data from the API display it
             if is_current_day:
                 weather_data = data['current']
                 pressure_in = weather_data.get("pressure_in", "N/A")
@@ -62,4 +62,5 @@ class WeatherFrame(ctk.CTkFrame):
             self.pressure_label.configure(
                 text=f"Average Pressure: {pressure_in:.2f} in" if isinstance(pressure_in, float) else f"Pressure: {pressure_in}"
             )
+            
             self.temp_label.configure(text=f"{temperature} °C")
