@@ -63,8 +63,8 @@ class MainFrame(ctk.CTkFrame):
         self.detail_frame.content(self.data)
         self.data_frame.content(self.data)
         self.search_entry.grid_configure(pady=[10, 0])
+        # Only disable the "Previous Day" button here, don't re-enable it.
         self.previous_btn.configure(state="disabled")
-        self.previous_btn.configure(state="normal")
 
     def next(self):
         if self.data:
@@ -72,11 +72,13 @@ class MainFrame(ctk.CTkFrame):
             self.detail_frame.content(self.data, self.count)
             self.data_frame.content(self.data, self.count)
             self.date_label.configure(text=self.set_label_text())
-
             self.search_entry.grid_configure(pady=[75, 10])
 
-            if self.count < 7:
+            # Enable the "Previous Day" button if we're not on the current day.
+            if self.count >= 1:
                 self.previous_btn.configure(state="normal")
+            else:  # If self.count is not greater than 0, ensure the button is disabled.
+                self.previous_btn.configure(state="disabled")
 
             if self.count == 6:
                 self.next_btn.configure(state="disabled")
@@ -95,7 +97,7 @@ class MainFrame(ctk.CTkFrame):
                 self.next_btn.configure(state="normal")
 
             if self.count == 0:
-                self.previous_btn.configure(state="disabled")
+                self.previous_btn.configure(state="disabled")  # Disable the "Previous Day" button on the current day
                 self.weather_frame.grid()
                 self.search_entry.grid_configure(pady=[10, 0])
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="weather_data" uuid="3bc89865-0680-4394-89f8-477745ea7d00">
+    <data-source source="LOCAL" name="weather_data" uuid="bfaf25b6-160c-421a-9e0c-ebce65e9d883">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\J\PycharmProjects\Weather_System v2\weather_data.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\J\Documents\GitHub\Weather_System_with_GUI\weather_data.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
