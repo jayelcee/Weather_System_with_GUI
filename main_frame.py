@@ -11,7 +11,7 @@ from PIL import Image
 
 
 class MainFrame(ctk.CTkFrame):
-    def __init__(self, master, **kwargs):
+    def __init__(self, master, **kwargs): # Initialize customtkinter UI elements for (current weather & forecast, future & previous forecast)
         super().__init__(master, **kwargs)
 
         self.data = {}
@@ -68,61 +68,61 @@ class MainFrame(ctk.CTkFrame):
         self.next_btn.configure(
             state="normal" if self.count < len(self.data["forecast"]["forecastday"]) - 1 else "disabled")
 
-    def next(self):
+    def next(self): # Call to refresh and get the next day forecast (7 days, included the current day)
         if self.data and self.count < len(self.data["forecast"]["forecastday"]) - 1:
             self.count += 1
             self.content()  # Update the content for the next day
 
-    def previous(self):
+    def previous(self): # Call to refresh and get the previous day forecast (7 days)
         if self.data and self.count > 0:
             self.count -= 1
             self.content()  # Update the content for the previous day
 
-    def set_label_text(self):
-        current_date = datetime.now().date()
-        formatted_date = datetime.strptime(self.data["forecast"]["forecastday"][self.count]["date"], "%Y-%m-%d").date()
-        date_name = formatted_date.strftime("%A")
-        month = formatted_date.strftime('%B')
+    def set_label_text(self): # It displays the date status
+        current_date = datetime.now().date() # Get current date 
+        formatted_date = datetime.strptime(self.data["forecast"]["forecastday"][self.count]["date"], "%Y-%m-%d").date() # Set format for date
+        date_name = formatted_date.strftime("%A") # Get name of day (Monday, Tuesday, etc.)
+        month = formatted_date.strftime('%B') # Get name of the month
 
         location = self.data["location"]
         name = location["name"]
         region = location["region"]
         country = location["country"]
 
-        if formatted_date == current_date:
+        if formatted_date == current_date: # If date of data is same in current_date
             return f"Today's Weather Forecast - {name}, {region}, {country}"
-        elif formatted_date == current_date - timedelta(days=1):
+        elif formatted_date == current_date - timedelta(days=1): # If date of data is same in yesterday (current_date - 1)
             return f"Yesterday's Weather Forecast - {name}, {region}, {country}"
-        elif formatted_date == current_date + timedelta(days=1):
+        elif formatted_date == current_date + timedelta(days=1): # If date of data is same in tomorrow (current_date + 1)
             return f"Tomorrow's Weather Forecast - {name}, {region}, {country}"
         else:
             return f"{date_name} {str(formatted_date).split('-')[2]} {month} Weather Forecast - {name}, {region}, {country}"
 
-    def delete_message_text(self):
+    def delete_message_text(self): # Delete message after searching
         sleep(5)
         self.message_label.configure(text="")
 
-    def search(self, event):
+    def search(self, event): # Start search in a thread; it means API will run in background to avoid lagging/overloading the system
         Thread(target=self.request).start()
 
     def request(self):
         location = self.search_entry.get()
 
-        if location != "":
+        if location != "": # Check if CTK.entry if is empty
             try:
                 self.data = WeatherApi().request_forecast(location)
                 self.count = 0
                 self.content()
 
             except Exception as e:
-                if "HTTP" in str(e):
+                if "HTTP" in str(e): # If the API takes time to respond
                     self.message_label.configure(text="Timeout Error")
-                else:
+                else: # If no such location is found 
                     self.message_label.configure(text="No Location Found")
 
                 Thread(target=self.delete_message_text).start()
 
-    def alert(self, event):
+    def alert(self, event): # Open a new window to show alert of current displayed location
         if self.alert_toplvl is None or not self.alert_toplvl.winfo_exists():
             self.alert_toplvl = Alert(master=self.master, data=self.data)
         else:
