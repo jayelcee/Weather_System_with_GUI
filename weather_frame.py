@@ -47,9 +47,9 @@ class WeatherFrame(ctk.CTkFrame):
 
             condition = weather_data["condition"]
             condition_text = condition["text"]
-            icon_path = condition['icon'].split('/')[-1]
-            condition_icon_path = f"weather_image/day/{icon_path}"
-            condition_icon = Image.open(condition_icon_path)
+            icon_path = condition['icon'].split('/')[-1] # Get condition icon link and split it with '/' to get the last string
+            condition_icon_path = f"weather_image/day/{icon_path}" # Use the string 'icon_path' which is a .png file to locate in folder of image
+            condition_icon = Image.open(condition_icon_path) # Open the image using the 'condition_icon_path' which is the path of the image to be displayed
 
             wind_kph = weather_data.get("wind_kph", weather_data.get("maxwind_kph", "N/A"))
             precip_mm = weather_data.get("precip_mm", weather_data.get("totalprecip_mm", "N/A"))
