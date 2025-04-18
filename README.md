@@ -58,12 +58,12 @@
 
 ## 🖼 Screenshots
 
-![current1](https://github.com/user-attachments/assets/cc4c86cb-2557-48b5-a3b8-22e3e3a3b127)
+![current1](https://github.com/user-attachments/assets/cc4c86cb-2557-48b5-a3b8-22e3e3a3b127)  
    *View of current weather information.*
 
-![historical](https://github.com/user-attachments/assets/6fab3574-96d3-4f3b-b101-fa5e44a680ed)
+![historical](https://github.com/user-attachments/assets/6fab3574-96d3-4f3b-b101-fa5e44a680ed)  
    *View of historical weather data for a selected date.*
 
 ![alert1](https://github.com/user-attachments/assets/7c7f490e-ad7b-48f0-8787-5d067fc23c20)
-![alert2](https://github.com/user-attachments/assets/dc27be6c-880a-4a99-b71c-f360dda0d704)
+![alert2](https://github.com/user-attachments/assets/dc27be6c-880a-4a99-b71c-f360dda0d704)  
    *Display alert details if there are.*
