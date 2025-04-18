@@ -53,17 +53,8 @@
    ```bash
    pip install -r requirements.txt
    ```
-   Run your script using the virtual environment's Python.
-   ```bash
-   python main.py
-   ```
 
-4. **Obtain WeatherAPI Key**
-
-   - Sign up at [WeatherAPI.com](https://www.weatherapi.com/) to obtain a free API key.
-   - Replace the placeholder in the code with your actual API key.
-
-5. **Run the Application**
+3. **Run the Application**
 
    ```bash
    python main.py
