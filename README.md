@@ -2,7 +2,9 @@
 
 **MetraWeather** is a Python-based desktop application that provides real-time weather forecasts and historical weather data for locations across the Philippines. Leveraging data from the WeatherAPI, MetraWeather offers users a sleek interface to view up-to-date weather conditions, including temperature, wind speed, humidity, and precipitation.
 
-![MetraWeather Screenshot](screenshot.png) <!-- Replace with actual screenshot if available -->
+## 🧠 Program Flowchart
+![flowchart](https://github.com/user-attachments/assets/6ed542a2-4f78-44e8-b2fe-99cb72de1285)
+
 
 ## 🌟 Features
 
@@ -19,6 +21,12 @@
 - **Tkinter**: Standard GUI library for building the desktop interface.
 - **SQLite**: Lightweight database for storing and retrieving weather data.
 - **WeatherAPI.com**: Source of all weather data presented by the application.
+
+## 👩🏻‍💻 Developers
+- Altares, Cyril John
+- Camasura, Jasmine L.
+- Cudiamat, Ma. Angeline C.
+- Jestingor, Neal Tracy D.
 
 ## 🚀 Installation
 
@@ -50,8 +58,12 @@
 
 ## 🖼 Screenshots
 
-![Main Interface](assets/screenshot_main.png)
-*Main interface displaying current weather information.*
+![current1](https://github.com/user-attachments/assets/cc4c86cb-2557-48b5-a3b8-22e3e3a3b127)
+*View of current weather information.*
 
-![Historical Data](assets/screenshot_history.png)
+![historical](https://github.com/user-attachments/assets/6fab3574-96d3-4f3b-b101-fa5e44a680ed)
 *View of historical weather data for a selected date.*
+
+![alert1](https://github.com/user-attachments/assets/7c7f490e-ad7b-48f0-8787-5d067fc23c20)
+![alert2](https://github.com/user-attachments/assets/dc27be6c-880a-4a99-b71c-f360dda0d704)
+*Display alert details if there are.*
