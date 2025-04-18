@@ -1,6 +1,6 @@
 # MetraWeather Desktop Application
 
-**MetraWeather** is a Python-based desktop application that provides real-time weather forecasts and historical weather data for locations across the Philippines. Leveraging data from the WeatherAPI, MetraWeather offers users a sleek interface to view up-to-date weather conditions, including temperature, wind speed, humidity, and precipitation.
+**MetraWeather** is a Python-based desktop application that provides real-time weather forecasts and historical weather data for locations across the world. Leveraging data from the WeatherAPI, MetraWeather offers users a sleek interface to view up-to-date weather conditions, including temperature, wind speed, humidity, and precipitation.
 
 ## 🧠 Program Flowchart
 ![flowchart](https://github.com/user-attachments/assets/6ed542a2-4f78-44e8-b2fe-99cb72de1285)
