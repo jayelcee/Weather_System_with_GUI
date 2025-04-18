@@ -22,6 +22,9 @@
 - **SQLite**: Lightweight database for storing and retrieving weather data.
 - **WeatherAPI.com**: Source of all weather data presented by the application.
 
+## 📑 Detailed Documentation:
+https://github.com/jayelcee/Weather_System_with_GUI/blob/master/Project%20Documentation.pdf
+
 ## 👩🏻‍💻 Developers
 - Altares, Cyril John
 - Camasura, Jasmine L.
